@@ -1,0 +1,10 @@
+{
+  "description": "Converts JSON data into a global CSS file, enabling developers to streamline styling by directly transforming JSON into CSS code.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
