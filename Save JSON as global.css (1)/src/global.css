@@ -1,0 +1,248 @@
+/* TOUN28 Solutions — Design Tokens
+   Source: design-tokens.json (analysisDate: 2026-09-03)
+   Theme: dark / clinical / precision skin analysis
+*/
+
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css');
+@import "tailwindcss";
+
+/* ─── Source CSS Variables (as-implemented) ─── */
+:root {
+  --bk: #F0F0F0;        /* primary light ink in dark theme */
+  --wh: #121212;        /* primary dark surface in dark theme */
+  --g05: #1C1C1C;
+  --ge: #2A2A2A;
+  --g9: #7A7A7A;
+  --g6: #B0B0B0;
+  --max: 430px;
+
+  /* ─── Normalized Color Aliases ─── */
+  --color-canvas: #050505;
+  --color-canvas-deep: #000000;
+  --color-surface-base: #121212;
+  --color-surface-raised: #1A1A1A;
+  --color-surface-subtle: #1C1C1C;
+  --color-border-subtle: #2A2A2A;
+  --color-text-primary: #F0F0F0;
+  --color-text-strong: #FFFFFF;
+  --color-text-secondary: #B0B0B0;
+  --color-text-tertiary: #7A7A7A;
+  --color-text-muted: #C9C9C9;
+  --color-accent-gentle: #5A9A5A;
+  --color-accent-intensive: #C02020;
+  --color-accent-error: #FF5A5A;
+  --color-accent-camera-scan: #78DCFF;
+
+  /* ─── Opacity Presets ─── */
+  --opacity-scrim-default: 0.58;
+  --opacity-scrim-question-and-mode: 0.85;
+  --opacity-disabled-button: 0.18;
+  --opacity-disabled-modal-button: 0.35;
+
+  /* ─── Spacing Scale ─── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-9: 40px;
+  --space-10: 48px;
+  --space-11: 60px;
+
+  /* ─── Layout Insets ─── */
+  --inset-page-horizontal: 24px;
+  --inset-compact-horizontal: 20px;
+  --inset-question-body-top: 26px;
+  --inset-question-footer: 14px 24px 30px;
+  --inset-section-block: 22px 24px;
+
+  /* ─── Border Widths ─── */
+  --border-divider: 1px;
+  --border-emphasis: 1.5px;
+  --border-hero-bottom: 2px;
+  --border-progress: 3px;
+  --border-hero-status: 4px;
+
+  /* ─── Corner Radius ─── */
+  --radius-default: 0px;
+  --radius-round: 50%;
+  --radius-camera-action: 13px;
+
+  /* ─── Shadows ─── */
+  --shadow-camera-stage: 0 0 0 1px rgba(255, 255, 255, 0.12), 0 18px 60px rgba(0, 0, 0, 0.5);
+  --shadow-camera-scan-glow: 0 0 14px 3px rgba(120, 220, 255, 0.55);
+
+  /* ─── Motion Tokens ─── */
+  --duration-screen-enter: 280ms;
+  --duration-progress: 400ms;
+  --duration-fast-feedback: 150ms;
+  --duration-modal-enter: 300ms;
+  --easing-screen-enter: ease;
+  --easing-progress: cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-modal-enter: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Base ─── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--color-canvas);
+  color: var(--color-text-primary);
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+    system-ui, "Noto Sans KR", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── App Shell ─── */
+#root {
+  max-width: var(--max);
+  min-height: 100vh;
+  margin: 0 auto;
+  background-color: var(--color-surface-base);
+}
+
+/* ─── Typography Scale ─── */
+.type-brand-micro {
+  font-size: 9px;
+  font-weight: 900;
+  line-height: normal;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+}
+
+.type-section-meta {
+  font-size: 9px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+.type-display-xl {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--color-text-primary);
+}
+
+.type-display-l {
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: var(--color-text-primary);
+}
+
+.type-heading-m {
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1.28;
+  letter-spacing: -0.025em;
+  color: var(--color-text-primary);
+}
+
+.type-heading-s {
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+}
+
+.type-body-m {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+}
+
+.type-body-s {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+
+.type-button-label {
+  font-size: 11px;
+  font-weight: 900;
+  line-height: normal;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+/* ─── Screen Transitions ─── */
+@keyframes screen-enter {
+  from {
+    opacity: 0;
+    transform: translateX(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes modal-enter {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes splash-pulse {
+  0%   { transform: scale(0.85); opacity: 0.6; }
+  50%  { transform: scale(1.15); opacity: 0;   }
+  100% { transform: scale(0.85); opacity: 0;   }
+}
+
+@keyframes scan-line {
+  0%   { top: 0%; }
+  50%  { top: 100%; }
+  100% { top: 0%; }
+}
+
+@keyframes loading-dot {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50%       { opacity: 1;   transform: scale(1);   }
+}
+
+@keyframes load-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(0.95); }
+  50%       { opacity: 1;   transform: scale(1.05); }
+}
+
+/* ─── Tap highlight ─── */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

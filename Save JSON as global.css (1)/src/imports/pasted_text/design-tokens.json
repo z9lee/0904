@@ -1,0 +1,797 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schemaPurpose": "사이트 구현값과 화면 관찰을 바탕으로 정리한 디자인 시스템 추출 데이터입니다.",
+  "meta": {
+    "name": "TOUN28 Solutions — Precision Skin Analysis",
+    "sourceUrl": "https://test.solutions.ai.kr/",
+    "analysisDate": "2026-09-03",
+    "localeObserved": "ko-KR",
+    "productType": "mobile-first self-guided skin analysis web experience",
+    "scope": [
+      "splash loading",
+      "language selection",
+      "analysis mode selection",
+      "questionnaire",
+      "analysis loading",
+      "result report",
+      "optional face-analysis camera",
+      "email/result modal"
+    ],
+    "evidence": {
+      "primary": "Rendered page review and same-page CSS/DOM inspection",
+      "valueSourceLegend": {
+        "implemented": "Source CSS or DOM explicitly specifies the value.",
+        "observed": "Measured or visually inferred from the rendered page; use as a working reference.",
+        "normalized": "A semantic alias created from implementation values for design-system reuse."
+      },
+      "captureLimit": "The final quiz submission was intentionally not executed, so the detailed result content is represented by CSS and DOM template inspection rather than a live generated report."
+    }
+  },
+  "designIntent": {
+    "keywords": [
+      "clinical",
+      "precision",
+      "dark laboratory",
+      "data-led",
+      "quiet luxury",
+      "editorial minimalism"
+    ],
+    "visualStrategy": "A near-black mobile canvas, monochrome photography, fine technical lines, and compact high-tracking labels frame the experience as a controlled skin-analysis system rather than a conventional commerce quiz.",
+    "informationDensity": "moderate",
+    "contrastStrategy": "High text contrast is reserved for headings, selected states, primary actions, and key product data. Secondary labels recede in gray and all structural separation relies on low-contrast rules.",
+    "theme": "dark"
+  },
+  "implementationTokens": {
+    "sourceCssVariables": {
+      "--bk": {
+        "value": "#F0F0F0",
+        "source": "implemented",
+        "note": "The variable name is counterintuitive; it resolves to the primary light ink in the active dark theme."
+      },
+      "--wh": {
+        "value": "#121212",
+        "source": "implemented",
+        "note": "The variable name is counterintuitive; it resolves to the primary dark surface in the active dark theme."
+      },
+      "--g05": {
+        "value": "#1C1C1C",
+        "source": "implemented"
+      },
+      "--ge": {
+        "value": "#2A2A2A",
+        "source": "implemented"
+      },
+      "--g9": {
+        "value": "#7A7A7A",
+        "source": "implemented"
+      },
+      "--g6": {
+        "value": "#B0B0B0",
+        "source": "implemented"
+      },
+      "--max": {
+        "value": "430px",
+        "source": "implemented"
+      }
+    },
+    "normalizedColorAliases": {
+      "canvas": {
+        "value": "#050505",
+        "usage": "Desktop surround and camera screen base.",
+        "source": "implemented"
+      },
+      "canvasDeep": {
+        "value": "#000000",
+        "usage": "Splash and analysis-loading full-screen background.",
+        "source": "implemented"
+      },
+      "surfaceBase": {
+        "value": "#121212",
+        "usage": "App shell, standard screen surface, product-grid cells.",
+        "source": "normalized"
+      },
+      "surfaceRaised": {
+        "value": "#1A1A1A",
+        "usage": "Modal and disclaimer surface.",
+        "source": "implemented"
+      },
+      "surfaceSubtle": {
+        "value": "#1C1C1C",
+        "usage": "Disclosure panel, explanatory box, pressed state.",
+        "source": "normalized"
+      },
+      "borderSubtle": {
+        "value": "#2A2A2A",
+        "usage": "Primary dividers, progress rail, low-emphasis outlined action.",
+        "source": "normalized"
+      },
+      "textPrimary": {
+        "value": "#F0F0F0",
+        "usage": "Default heading, brand label, primary icon and structural line color.",
+        "source": "normalized"
+      },
+      "textStrong": {
+        "value": "#FFFFFF",
+        "usage": "Selected option copy, major CTA, full-light states.",
+        "source": "implemented"
+      },
+      "textSecondary": {
+        "value": "#B0B0B0",
+        "usage": "Supporting copy and description text.",
+        "source": "normalized"
+      },
+      "textTertiary": {
+        "value": "#7A7A7A",
+        "usage": "Meta labels, hints, helper text, inactive count.",
+        "source": "normalized"
+      },
+      "textMuted": {
+        "value": "#C9C9C9",
+        "usage": "Body copy in report information areas.",
+        "source": "implemented"
+      },
+      "accentGentle": {
+        "value": "#5A9A5A",
+        "usage": "Gentle-care dosage tier, status rule, dosage badge.",
+        "source": "implemented"
+      },
+      "accentIntensive": {
+        "value": "#C02020",
+        "usage": "Intensive-care dosage tier, status rule, dosage badge.",
+        "source": "implemented"
+      },
+      "accentError": {
+        "value": "#FF5A5A",
+        "usage": "Dark-theme form error.",
+        "source": "implemented"
+      },
+      "accentCameraScan": {
+        "value": "#78DCFF",
+        "usage": "Face-analysis scan-line highlight.",
+        "source": "implemented"
+      }
+    },
+    "opacityPresets": {
+      "scrimDefault": {
+        "value": 0.58,
+        "usage": "Default background-image darkening basis; the vertical gradient increases it by 0.06 at the top and 0.14 at the bottom.",
+        "source": "implemented"
+      },
+      "scrimQuestionAndMode": {
+        "value": 0.85,
+        "usage": "Observed inline setting for questionnaire and mode-selection image backgrounds.",
+        "source": "implemented"
+      },
+      "disabledButton": {
+        "value": 0.18,
+        "usage": "Disabled questionnaire CTA.",
+        "source": "implemented"
+      },
+      "disabledModalButton": {
+        "value": 0.35,
+        "usage": "Disabled modal submit CTA.",
+        "source": "implemented"
+      }
+    }
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": {
+        "value": "Pretendard Variable, Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Noto Sans KR, sans-serif",
+        "source": "implemented",
+        "role": "All UI and body typography."
+      }
+    },
+    "fontRendering": {
+      "webkitFontSmoothing": "antialiased",
+      "source": "implemented"
+    },
+    "typeStyles": {
+      "brandMicro": {
+        "fontSize": "9px",
+        "fontWeight": 900,
+        "lineHeight": "normal",
+        "letterSpacing": "0.30em–0.35em",
+        "textTransform": "uppercase",
+        "color": "textPrimary",
+        "usage": "TOUN28/TOUN28 Solutions labels and loading labels.",
+        "source": "implemented"
+      },
+      "sectionMeta": {
+        "fontSize": "9px–10px",
+        "fontWeight": 700,
+        "lineHeight": "normal",
+        "letterSpacing": "0.15em–0.25em",
+        "textTransform": "uppercase",
+        "color": "textTertiary",
+        "usage": "Question number, report labels, tags, badges and helper actions.",
+        "source": "implemented"
+      },
+      "displayXL": {
+        "fontSize": "32px",
+        "fontWeight": 800,
+        "lineHeight": 1.15,
+        "letterSpacing": "-0.03em",
+        "color": "textPrimary",
+        "usage": "Result bundle name.",
+        "source": "implemented"
+      },
+      "displayL": {
+        "fontSize": "26px–30px",
+        "fontWeight": 900,
+        "lineHeight": "1.10–1.15",
+        "letterSpacing": "-0.03em",
+        "color": "textPrimary",
+        "usage": "Language-selection and mode-selection headings.",
+        "source": "implemented"
+      },
+      "headingM": {
+        "fontSize": "19px–22px",
+        "fontWeight": "800–900",
+        "lineHeight": "1.25–1.32",
+        "letterSpacing": "-0.02em–-0.025em",
+        "color": "textPrimary",
+        "usage": "Question title, result section title, modal title, loading title.",
+        "source": "implemented"
+      },
+      "headingS": {
+        "fontSize": "15px–16px",
+        "fontWeight": 900,
+        "lineHeight": "1.45 when multi-line",
+        "letterSpacing": "-0.02em",
+        "color": "textPrimary",
+        "usage": "Language name, skin type name, closing statement.",
+        "source": "implemented"
+      },
+      "bodyM": {
+        "fontSize": "13px–14px",
+        "fontWeight": "500–800 by hierarchy",
+        "lineHeight": "1.5–1.7",
+        "letterSpacing": "default to 0",
+        "color": "textPrimary or textMuted",
+        "usage": "Option title, report body, product name and recommendation copy.",
+        "source": "implemented"
+      },
+      "bodyS": {
+        "fontSize": "11px–12.5px",
+        "fontWeight": "400–700 by hierarchy",
+        "lineHeight": "1.55–1.8",
+        "letterSpacing": "0.02em–0.05em when meta-like",
+        "color": "textSecondary or textTertiary",
+        "usage": "Descriptions, helper copy, modal description, privacy explanation.",
+        "source": "implemented"
+      },
+      "buttonLabel": {
+        "fontSize": "10px–13px",
+        "fontWeight": 900,
+        "lineHeight": "normal",
+        "letterSpacing": "0.10em–0.12em",
+        "textTransform": "uppercase when English/utility label",
+        "color": "contextual inverse",
+        "usage": "Primary CTA, nudge CTA, modal CTA, restart action.",
+        "source": "implemented"
+      }
+    },
+    "contentRules": {
+      "brandAndSystemLabels": "Use uppercase English system labels with unusually generous tracking; retain Korean display text in normal case and heavy weight.",
+      "headingLineBreaks": "Editorial headings may use intentional line breaks, especially on the mode screen and closing statement.",
+      "numerals": "Use leading-zero format for visible question labels (for example, Q.01) and compact numeric labels for options."
+    }
+  },
+  "spacing": {
+    "baseUnit": {
+      "value": "4px",
+      "source": "observed",
+      "note": "Most declared values align to a four-pixel rhythm, with some semantic exceptions."
+    },
+    "scale": {
+      "space1": "4px",
+      "space2": "8px",
+      "space3": "10px–12px",
+      "space4": "14px–16px",
+      "space5": "18px–20px",
+      "space6": "22px–24px",
+      "space7": "26px–28px",
+      "space8": "30px–32px",
+      "space9": "36px–40px",
+      "space10": "48px",
+      "space11": "52px–60px"
+    },
+    "layoutInsets": {
+      "pageHorizontal": {
+        "value": "24px",
+        "usage": "Language header/list, mode header/cards, question body/footer, report sections, modal.",
+        "source": "implemented"
+      },
+      "compactHorizontal": {
+        "value": "20px",
+        "usage": "Question and result top bars; product information panel.",
+        "source": "implemented"
+      },
+      "questionBodyTop": {
+        "value": "26px",
+        "source": "implemented"
+      },
+      "questionFooter": {
+        "value": "14px 24px 30px",
+        "source": "implemented"
+      },
+      "sectionBlock": {
+        "value": "22px 24px",
+        "usage": "Result report section.",
+        "source": "implemented"
+      }
+    },
+    "componentGaps": {
+      "languageRow": "14px between flag and label stack; 16px toward trailing arrow",
+      "questionOption": "13px between ordinal and answer",
+      "reportList": "10px between marker/step and text",
+      "nudge": "12px between copy and CTA",
+      "loadingStep": "11px vertical and horizontal gap",
+      "cameraActionStack": "10px"
+    }
+  },
+  "layout": {
+    "viewportStrategy": {
+      "minHeight": "100vh",
+      "horizontalOverflow": "hidden",
+      "source": "implemented"
+    },
+    "appShell": {
+      "maxWidth": "430px",
+      "minHeight": "100vh",
+      "margin": "0 auto",
+      "background": "surfaceBase",
+      "desktopBehavior": "The app remains a centered narrow column; the surrounding desktop canvas stays near-black.",
+      "source": "implemented"
+    },
+    "screenModel": {
+      "inactive": "display: none",
+      "active": "display: flex; flex-direction: column; min-height: 100vh",
+      "source": "implemented"
+    },
+    "topProgressBar": {
+      "position": "fixed",
+      "top": "0",
+      "width": "100%; max-width: 430px",
+      "height": "3px",
+      "alignment": "centered relative to viewport",
+      "railColor": "borderSubtle",
+      "fillColor": "textStrong",
+      "source": "implemented"
+    },
+    "productGrid": {
+      "columns": 3,
+      "container": "display: flex; width: 100%",
+      "columnDivider": "1.5px solid textStrong",
+      "markArea": "1:1 aspect ratio",
+      "photoArea": "min-height: calc(45vw + 50px); max-height: 250px",
+      "source": "implemented"
+    },
+    "responsiveBehavior": {
+      "breakpointModel": "No explicit media-query breakpoint was observed in the inspected stylesheet; width is capped by the app shell.",
+      "imageRule": "Background images use cover/center; product imagery uses object-fit: cover.",
+      "mobilePriority": "All information architecture is optimized as a vertical one-column flow.",
+      "source": "implemented"
+    }
+  },
+  "shapeAndElevation": {
+    "borderWidths": {
+      "defaultDivider": "1px",
+      "emphasisOutline": "1.5px",
+      "heroBottom": "2px",
+      "progress": "3px",
+      "heroStatusLine": "4px"
+    },
+    "cornerRadius": {
+      "default": "0px",
+      "roundStatusAndLoader": "50%",
+      "cameraStage": "50%",
+      "cameraAction": "13px",
+      "source": "implemented"
+    },
+    "shadows": {
+      "cameraStage": "0 0 0 1px rgba(255,255,255,0.12), 0 18px 60px rgba(0,0,0,0.5)",
+      "cameraScanGlow": "0 0 14px 3px rgba(120,220,255,0.55)",
+      "default": "No card shadow; structure comes from rules and surface contrast."
+    },
+    "surfaceConstruction": "The system avoids rounded cards in the core analysis and report flow. Square edges, horizontal dividers, and strong inversions create the visual hierarchy."
+  },
+  "imageryAndBackground": {
+    "backgroundTreatment": {
+      "mechanism": "A screen-level pseudo-element uses a full-bleed image with cover sizing and a dark vertical gradient scrim above it; interactive/content layers sit above the scrim.",
+      "imageSizing": "cover",
+      "imagePosition": "center",
+      "scrimGradient": "rgba(8,8,8, calc(scrim + 0.06)) at 0%; rgba(8,8,8,scrim) at 42%; rgba(8,8,8, calc(scrim + 0.14)) at 100%",
+      "source": "implemented"
+    },
+    "photographicDirection": {
+      "subjectMatter": [
+        "skin texture",
+        "facial silhouette",
+        "laboratory or analytical context",
+        "hand and face detail"
+      ],
+      "grading": "Low-key monochrome or desaturated image, substantially obscured by a dark scrim.",
+      "purpose": "Adds human/skin context without competing with questionnaire readability.",
+      "source": "observed"
+    },
+    "technicalMotifs": {
+      "grid": "Thin 24px or 28px square grid in white at 0.04–0.05 alpha.",
+      "scanningLine": "A 2px horizontal translucent white gradient for splash/loading; a 3px cyan scan line for camera analysis.",
+      "pulseRings": "Three thin circular rings at 80px, 140px, and 200px on splash.",
+      "source": "implemented"
+    },
+    "resultAssets": {
+      "elementMarks": "images/mark_S1.png through images/mark_S9.png",
+      "productPhotos": "images/product_S1.png through images/product_S9.png",
+      "usage": "Three-column product bundle grid in the result hero.",
+      "source": "implemented"
+    }
+  },
+  "motion": {
+    "tokens": {
+      "screenEnter": {
+        "duration": "280ms",
+        "easing": "ease",
+        "effect": "opacity 0→1; translateX(14px)→0",
+        "source": "implemented"
+      },
+      "progress": {
+        "duration": "400ms",
+        "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "property": "width",
+        "source": "implemented"
+      },
+      "fastFeedback": {
+        "duration": "100ms–200ms",
+        "easing": "ease",
+        "usage": "Option press, button opacity and disclosure open state.",
+        "source": "implemented"
+      },
+      "modalEnter": {
+        "duration": "300ms",
+        "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "effect": "translateY(50px)→0 and opacity 0→1",
+        "source": "implemented"
+      }
+    },
+    "signatureAnimations": {
+      "splashPulse": "Three rings expand from scale(0.85) to scale(1.15) while fading over 3s; each ring has a 0.6s offset.",
+      "scan": "A horizontal line travels top-to-bottom-to-top in 2.4s on splash and 3s on loading.",
+      "loadingDots": "Three 4–5px dots alternate opacity and scale on a 1.4s loop with 0.2s offsets.",
+      "loadPulse": "Active step icon pulses scale/opacity on a 1.2s loop.",
+      "cameraScan": "Cyan line animates during camera scanning over 1.5s.",
+      "source": "implemented"
+    },
+    "motionPrinciple": "Animation is functional and diagnostic: it signals initialization, progress, scanning, and state change rather than decorative delight."
+  },
+  "components": {
+    "systemLabel": {
+      "description": "Compact uppercase brand or analytical category label.",
+      "anatomy": [
+        "label text"
+      ],
+      "style": {
+        "type": "brandMicro or sectionMeta",
+        "color": "textPrimary or textTertiary depending on hierarchy"
+      },
+      "usage": "Place above a primary Korean title or at the left of a compact top bar."
+    },
+    "languageRow": {
+      "description": "Full-width navigation row for language selection.",
+      "anatomy": [
+        "flag glyph",
+        "two-line language label",
+        "trailing arrow"
+      ],
+      "layout": "flex row; align-items center; justify-content space-between; 18px 24px padding; 1px bottom divider",
+      "type": {
+        "primary": "15px / 700 / textPrimary",
+        "secondary": "10px / 500 / textTertiary"
+      },
+      "states": {
+        "default": "surfaceBase with borderSubtle divider",
+        "pressed": "surfaceSubtle"
+      },
+      "source": "implemented"
+    },
+    "modeCard": {
+      "description": "Full-width selection row for Quick or Precision Analysis.",
+      "anatomy": [
+        "eyebrow tag",
+        "title",
+        "description",
+        "outlined question-count badge",
+        "trailing arrow"
+      ],
+      "layout": "flex row; justify-content space-between; gap 16px; 26px 24px padding; bottom divider",
+      "type": {
+        "tag": "8px / 700 / 0.20em",
+        "title": "22px / 900 / -0.02em",
+        "description": "12px / normal / 1.55",
+        "badge": "9px / 700 / 0.10em"
+      },
+      "states": {
+        "default": "transparent over a strongly dimmed photographic background",
+        "pressed": "surfaceSubtle"
+      },
+      "source": "implemented"
+    },
+    "topBar": {
+      "description": "Compact navigation bar used in the question and result flows.",
+      "anatomy": [
+        "back control or leading spacer",
+        "center/brand label",
+        "progress count or status badge"
+      ],
+      "layout": "flex row; align-items center; justify-content space-between; 15px–16px vertical and 20px horizontal padding; 1px bottom divider",
+      "source": "implemented"
+    },
+    "questionHeader": {
+      "description": "Question context block preceding the answer list.",
+      "anatomy": [
+        "question serial",
+        "question prompt",
+        "Why this matters disclosure trigger",
+        "optional explanation panel"
+      ],
+      "layout": "26px 24px 20px body padding; serial margin-bottom 10px; title margin-bottom 8px; disclosure margin-bottom 22px",
+      "type": {
+        "serial": "9px / 700 / 0.20em / textTertiary",
+        "prompt": "19px / 900 / 1.32 / -0.025em / textPrimary",
+        "disclosure": "9px / 700 / 0.15em / textTertiary",
+        "explanation": "12px / normal / 1.65 / textSecondary"
+      },
+      "disclosurePanel": "surfaceSubtle; 12px 14px padding; 2px left rule in textStrong; no radius",
+      "source": "implemented"
+    },
+    "optionList": {
+      "description": "Single-select vertical answer list.",
+      "anatomy": [
+        "ordinal number",
+        "option text"
+      ],
+      "layout": "vertical stack; each item has 15px 0 padding, 13px internal gap, top and bottom 1px dividers",
+      "type": {
+        "ordinal": "10px / 700 / textTertiary; 20px fixed width",
+        "text": "14px / 500 / 1.5 / textPrimary"
+      },
+      "states": {
+        "default": "transparent surface",
+        "pressed": "surfaceSubtle",
+        "selected": "textStrong background, 24px horizontal inset, negative margins to bleed to the parent container edges, text and ordinal inverted to near-black"
+      },
+      "behavior": "Observed quiz options advance to the following question on selection; the full-width CTA remains as a continuation affordance.",
+      "source": "implemented and observed"
+    },
+    "primaryButton": {
+      "description": "Full-width or compact inverse CTA.",
+      "style": {
+        "background": "textStrong",
+        "foreground": "#000000",
+        "border": "none",
+        "font": "buttonLabel",
+        "heightModel": "16px vertical padding in questionnaire; 10px–15px vertical padding in compact CTA/modal",
+        "radius": "0px in quiz/report; 13px only for camera actions"
+      },
+      "states": {
+        "disabled": "opacity 0.18",
+        "enabled": "opacity 1",
+        "active": "Camera-specific action scales to 0.97"
+      },
+      "source": "implemented"
+    },
+    "outlineBadge": {
+      "description": "Compact status, count, or dosage classification label.",
+      "style": {
+        "border": "1.5px solid currentColor or textStrong",
+        "padding": "3px 8px for count/status; 7px 12px for dosage",
+        "font": "8px–12px, 600–700, tracked uppercase",
+        "radius": "0px"
+      },
+      "variants": [
+        "question count",
+        "result analysis status",
+        "gentle dosage",
+        "standard dosage",
+        "intensive dosage"
+      ],
+      "source": "implemented"
+    },
+    "resultSection": {
+      "description": "Repeated report module with eyebrow label, title, and content.",
+      "layout": "22px 24px padding; 1px bottom divider",
+      "type": {
+        "label": "9.5px / 700 / 0.22em / uppercase / textTertiary",
+        "title": "20px / 800 / -0.02em / textPrimary"
+      },
+      "contentPatterns": [
+        "dosage card",
+        "skin summary row",
+        "insight list",
+        "reason callout",
+        "lifestyle list",
+        "progression nudge"
+      ],
+      "source": "implemented"
+    },
+    "dosageCard": {
+      "description": "High-emphasis recommendation card in the result report.",
+      "layout": "1.5px textStrong outline; 14px 16px padding",
+      "anatomy": [
+        "tier label",
+        "tier reason",
+        "step label",
+        "product name",
+        "amount/timing tag",
+        "usage copy"
+      ],
+      "type": {
+        "tier": "9px / 900 / 0.15em",
+        "reason": "11px / italic / 1.6 / textSecondary",
+        "step": "8px / 700 / 0.10em / textTertiary",
+        "product": "13px / 800 / uppercase",
+        "usage": "13px / 1.65 / textMuted"
+      },
+      "semanticVariants": [
+        "gentle accentGentle",
+        "standard textStrong",
+        "intensive accentIntensive"
+      ],
+      "source": "implemented"
+    },
+    "skinSummaryRow": {
+      "description": "Icon-led compact summary of the assessed skin type.",
+      "layout": "flex row, gap 12px, 14px padding, 1.5px textStrong outline",
+      "iconTile": "34px square; textStrong background and near-black icon",
+      "type": {
+        "name": "15px / 900 / textPrimary",
+        "description": "11.5px / 1.6 / textSecondary"
+      },
+      "source": "implemented"
+    },
+    "insightList": {
+      "description": "Minimal recommendation list with small circular marker.",
+      "layout": "Each row: 11px vertical padding, 10px gap, 1px bottom divider",
+      "marker": "4px solid textStrong circular dot, aligned with body baseline",
+      "source": "implemented"
+    },
+    "darkCallout": {
+      "description": "Informational block for bundle rationale or expanded explanation.",
+      "style": {
+        "background": "surfaceSubtle",
+        "leftRule": "2px solid textStrong",
+        "padding": "13px 15px for bundle; 12px 14px for question explanation",
+        "body": "13px / 1.7 / textMuted"
+      },
+      "source": "implemented"
+    },
+    "progressionNudge": {
+      "description": "Outlined upsell/progression box used to invite the more detailed analysis.",
+      "layout": "flex row; align-items center; justify-content space-between; gap 12px; 13px 14px padding; 1.5px outline",
+      "copy": "11.5px / 1.5 / textSecondary; bold line uses textPrimary",
+      "action": "compact primaryButton",
+      "source": "implemented"
+    },
+    "bottomSheetModal": {
+      "description": "Bottom-aligned email/result modal.",
+      "backdrop": "rgba(0,0,0,0.75)",
+      "surface": "surfaceRaised; max-width 430px; 28px 24px 40px padding",
+      "animation": "modalEnter",
+      "formField": "Full width, 1.5px textPrimary border, 13px 14px padding, 14px type, no radius",
+      "source": "implemented"
+    },
+    "analysisLoader": {
+      "description": "Fullscreen state that translates data processing into a visible, clinical progress sequence.",
+      "anatomy": [
+        "tracked label",
+        "large changing title",
+        "supporting copy",
+        "animated DNA-like helix",
+        "four vertical status steps",
+        "grid and scan-line background"
+      ],
+      "source": "implemented"
+    },
+    "cameraScanner": {
+      "description": "Optional face-analysis camera experience in the precision flow.",
+      "anatomy": [
+        "system label",
+        "instruction heading and helper copy",
+        "262px circular mirrored camera stage",
+        "dashed circular guide ring",
+        "scan line",
+        "stacked primary/ghost actions",
+        "privacy statement",
+        "analysis step status"
+      ],
+      "style": {
+        "stage": "262px circular, #101010 surface, soft dark shadow",
+        "primaryAction": "white fill, black text, 13px radius",
+        "secondaryAction": "transparent, 1px rgba(255,255,255,0.25) outline, 13px radius",
+        "scanAccent": "accentCameraScan"
+      },
+      "source": "implemented"
+    }
+  },
+  "screenPatterns": {
+    "splash": {
+      "composition": "Centered brand stack over subtle grid, scanning line, and concentric pulse rings; loading statement anchors to 48px above the lower edge.",
+      "background": "canvasDeep",
+      "source": "implemented"
+    },
+    "languageSelection": {
+      "composition": "3px top progress indicator; 60px top-padded header; 4 full-width language rows; centered instructional note.",
+      "source": "implemented and observed"
+    },
+    "modeSelection": {
+      "composition": "Dark photo-led header and two large, horizontal choice rows; each choice expresses scope through a tag, title, short explanation, count badge, and arrow.",
+      "source": "implemented and observed"
+    },
+    "questionnaire": {
+      "composition": "Fixed 3px top progress bar; compact navigation top bar; padded question header; vertical answer list; separated bottom action zone.",
+      "source": "implemented and observed"
+    },
+    "resultReport": {
+      "composition": "Compact brand/status bar; product recommendation hero with a 4px dosage-status rule; three-column product grid; a sequence of report sections; closing statement, disclaimer, and restart action.",
+      "source": "implemented"
+    },
+    "resultProductHero": {
+      "anatomy": [
+        "4px dosage-status line",
+        "bundle recommendation meta label",
+        "small bundle number",
+        "large bundle name",
+        "inverted concern tag",
+        "optional dosage badge",
+        "three-column product grid with image overlay"
+      ],
+      "source": "implemented"
+    }
+  },
+  "interactionRules": {
+    "touchFeedback": "Global tap highlight is disabled. Most list-like controls use a rapid surface-darkening active state; primary camera controls use a 0.97 scale press response.",
+    "selection": "A selected questionnaire option becomes a full-bleed white band within the content gutter and inverts ordinal/text to black.",
+    "progress": "Question count at the top and the 3px fill at the viewport edge communicate step completion.",
+    "disclosure": "Why-this-matters uses a chevron-like triangle that rotates 90 degrees on open and reveals a left-ruled helper panel.",
+    "modal": "Modal enters from the bottom against an opaque dark backdrop; success, sending, error, and disabled states rely on copy/color change rather than layout shift.",
+    "camera": "Scanner hides the action stack during active scanning and replaces it with processing steps."
+  },
+  "accessibilityNotes": {
+    "positivePatterns": [
+      "The core active dark theme provides strong foreground/background contrast for headings and primary actions.",
+      "Mobile controls use generous vertical padding, supporting touch interaction.",
+      "The camera screen exposes privacy copy and a denied-permission state."
+    ],
+    "implementationGapsToReview": [
+      "No global visible keyboard focus treatment was observed outside the modal input focus state.",
+      "Several clickable selection rows are implemented as div elements; production reuse should use buttons or equivalent keyboard semantics.",
+      "Auto-advancing answer selection should preserve an explicit confirm/next option for users who need to review their choice.",
+      "Animated scanning/pulse effects should honor a reduced-motion preference in a production system.",
+      "Muted gray copy should be contrast-tested against #121212 at final font sizes."
+    ],
+    "source": "observed and implemented"
+  },
+  "reuseGuidelines": {
+    "do": [
+      "Keep the shell narrow, centered, and mobile-first rather than expanding the content grid on desktop.",
+      "Use square components, fine lines, and measured whitespace as the primary hierarchy mechanism.",
+      "Pair Korean display content with concise tracked English system labels where the product voice calls for clinical precision.",
+      "Treat photography as a subdued contextual layer under a strong dark scrim.",
+      "Reserve semantic color for intensity and status; leave the base system monochrome."
+    ],
+    "avoid": [
+      "Avoid bright gradients, rounded marketing cards, dense iconography, or decorative color that weakens the analytical tone.",
+      "Avoid soft shadows in standard report and questionnaire cards; use dividers and inverse states instead.",
+      "Avoid placing un-scrimmed imagery behind essential copy.",
+      "Avoid more than one dominant CTA per screen."
+    ]
+  },
+  "knownLimitations": [
+    "This is an extraction from a single live deployment, not an official brand guideline supplied by TOUN28.",
+    "Exact background-image and product-asset licensing, source dimensions, and fallback behavior were not evaluated.",
+    "No explicit desktop breakpoint or prefers-reduced-motion rule was found in the inspected style block.",
+    "The application includes source naming inconsistencies for light/dark variables; the normalized aliases in this file are recommended for future reuse."
+  ]
+}
